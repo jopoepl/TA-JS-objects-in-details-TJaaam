@@ -22,7 +22,21 @@ For each different ways of creating object write different solutions.
 
 ### To test use the following data
 
+
+
 ```js
+
+function quizApp(answer) {
+  alert()
+   testData[isAnswerCorrect] = function(){
+    if(answer === this.correctAnswerIndex){
+      return alert(`Your answer is correct`)
+    } else {
+      return alert(`Your answer is incorrect`)
+    }
+   }
+}
+
 const testData = {
   title: 'Where is the capital of Jordan',
   options: ['Tashkent', 'Amaan', 'Kuwait City', 'Nairobi'],
