@@ -13,6 +13,10 @@
 For each different ways of creating object write different solutions.
 
 - Prototypal pattern of object creation (Put methods inside an object and create object using Object.create)
+
+
+
+
 - Pseudoclassical Pattern (Put methods inside F.prototype and use `new` to call function)
 - Create using class
 - Write test by creating two objects also test both methods.
