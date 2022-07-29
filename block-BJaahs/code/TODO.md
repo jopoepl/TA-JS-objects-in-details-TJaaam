@@ -26,15 +26,19 @@ For each different ways of creating object write different solutions.
 
 ```js
 
-function quizApp(answer) {
-  alert()
-   testData[isAnswerCorrect] = function(){
-    if(answer === this.correctAnswerIndex){
-      return alert(`Your answer is correct`)
-    } else {
-      return alert(`Your answer is incorrect`)
-    }
-   }
+function createQuestion(title, options, correctAnswerIndex) {
+  let question = {};
+  question.title = title;
+  question.options = options;
+  question.correctAnswer = correctAnswerIndex;
+  question.isAnsCorrect = function(index){
+    return index === this.correctAnswer;
+  }
+  question.getCorrectAnswer = function (){
+    return this.options[this.correctAnswer]
+  }
+  return question;
+
 }
 
 const testData = {
