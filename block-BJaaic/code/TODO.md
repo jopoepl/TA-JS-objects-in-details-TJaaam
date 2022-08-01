@@ -17,6 +17,9 @@ Methods
 
 - `summary()` - returns `I live in ${location} and I have ${numberOfLegs}`
 
+
+
+
 #### Dog
 
 It will have all the properties and methods of the Animal. These are the extra properties and methods these dogs will have.
