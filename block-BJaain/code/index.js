@@ -184,7 +184,7 @@ console.log(person.print()); // Jay Person
 let name1 = person.print;
 let name2 = person.details;
 
-console.log(name1()); // Jay Person
+console.log(name1()); // ""
 console.log(name2.print()); // Jay Details
 
 // --------
@@ -199,7 +199,7 @@ let outerFn = function () {
   return innerFn;
 };
 
-outerFn()();
+outerFn()(); // ReferenceError: innerItem is not defined
 
 // -----------
 
@@ -210,7 +210,7 @@ let object = {
     console.log('this inside of outerFn double()');
     console.log(this);
     return this.data.map(function (item) {
-      console.log(this); // Output ???
+      console.log(this); // obj
       return item * 2;
     });
   },
@@ -218,14 +218,14 @@ let object = {
     console.log('this inside of outerFn doubleArrow()');
     console.log(this);
     return this.dataDouble.map((item) => {
-      console.log(this); // Output ???
+      console.log(this); // window
       return item * 2;
     });
   },
 };
 
-object.double();
-object.doubleArrow();
+object.double(); //this inside of outerFn double() , this = window * 3, [2,4,6]
+object.doubleArrow(); //'this inside of outerFn doubleArrow()', this = obj, [2,4,6]
 
 // --------------
 
@@ -238,7 +238,7 @@ function print() {
 }
 
 let printNameBob = print.bind(bobObj);
-console.log(printNameBob()); // output??
+console.log(printNameBob()); // Bob
 
 // -------------------
 
@@ -257,7 +257,7 @@ let obj2 = {
 };
 
 let getSecondData = obj2.printSecondData.bind(obj1);
-console.log(getSecondData()); // Output and why ???
+console.log(getSecondData()); // 2
 
 // --------------
 
@@ -268,7 +268,7 @@ const call = {
   },
 };
 
-call.says(); // output ???
+call.says(); // `Hey, mom just called.`
 
 // -----------------
 
@@ -281,7 +281,7 @@ const call = {
 
 let newCall = call.says;
 
-newCall(); // output ???
+newCall(); // `Hey, und just called.`
 
 //  -----------------
 
@@ -299,4 +299,4 @@ const call = {
 
 let newCall = call.anotherCaller;
 
-newCall(); // output ??
+newCall(); //`und called, too!`
