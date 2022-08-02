@@ -5,10 +5,10 @@
 
 // myMap function goes here
 
-Array.prototype.myMap = function (cb, thisValue){
+Array.prototype.myMap = function (cb){
   let arr =[];
   for(let i = 0; i< this.length; i++){
-     this.push(cb(this[i]));
+     arr.push(cb(this[i], i, this));
   }
   return arr;
 }
@@ -39,6 +39,17 @@ After adding the function test it using the code below.
 
 // You code goes here
 
+Array.prototype.myFilter = function(cb) {
+  let arr = [];
+  for(let i = 0; i< this.length; i++){
+    if(cb(this[i], i, this) === true){
+      arr.push(this[i])
+    }
+  }
+  return arr;
+
+}
+
 let even = numbers.myFilter(function (num) {
   return num % 2 === 0;
 });
@@ -58,7 +69,9 @@ Make sure it does not the changes the original array.
 
 */
 
-// You code goes here
+Array.prototype.shuffle = function(cb){
+  return this.sort(() => Math.random() - 0.5)
+}
 
 // Test to check the shuffle method (It will return different output every time you call)
 console.log(numbers.shuffle());
@@ -72,7 +85,9 @@ new array and it should only contain unique elements in the array.
 Unique means no element should come multiple times.
 */
 
-// You code goes here
+Array.prototype.unique = function(){
+  return this.filter((ele, i) => i === this.indexOf(ele))
+}
 
 // Test to check the shuffle method (It will return different output every time you call)
 let num = [1, 2, 3, 4, 2, 3, 6, 7, 7];
@@ -86,7 +101,16 @@ console.log(strings.unique()); // ['h', 'e', 'l', 'o', 'w', 'r', 'd']
 array that will contain only element that is common in both the array.
 */
 
-// You code goes here
+Array.prototype.intersection = function(arr1){
+  return this.reduce((acc,cv) => {
+    if(arr1.includes(cv)){
+      acc.push(cv)
+    }
+    return acc;
+  }, []).unique();
+  }
+  
+
 
 // Test to check the shuffle method (It will return different output every time you call)
 console.log(num.intersection([2, 7, 11, 32])); // [2, 7]
@@ -98,7 +122,23 @@ and split the array into groups the length of size. If array can't be split even
 chunk will be the remaining elements. `length` should default to 1.
 */
 
-// You code goes here
+Array.prototype.chunk = function(size = 1){
+  let arr = [];
+  arrclone = [...this]
+  let limit = 0;
+  if (size > 1){
+    limit = Math.floor(this.length/size);
+  } else {
+    limit = this.length - 1
+  }
+  console.log(this.length)
+  console.log(limit)
+  for(let i =0; i<=(limit); i++){
+    arr.push(arrclone.slice(0, size))
+    arrclone.splice(0,size);
+  }
+  return arr;
+}
 
 // Test to check the shuffle method (It will return different output every time you call)
 console.log(num.chunk(2)); // [[1, 2], [3, 4], [2, 3], [6, 7], [7]]
