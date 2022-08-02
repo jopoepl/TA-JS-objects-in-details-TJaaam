@@ -5,6 +5,15 @@
 
 // myMap function goes here
 
+Array.prototype.myMap = function (cb, thisValue){
+  let arr =[];
+  for(let i = 0; i< this.length; i++){
+     this.push(cb(this[i]));
+  }
+  return arr;
+}
+
+
 // Test the myMap function you created above
 
 let numbers = [1, 5, 6, 8, 9];
