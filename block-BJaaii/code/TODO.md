@@ -29,7 +29,18 @@ Getter
 
 #### Test
 
+
 ```js
+class Stack{
+    constructor(){
+
+    }
+    push(ele){
+        return this.push(ele);
+    }
+}
+
+
 let myStack = new Stack();
 myStack.push('One');
 myStack.push('Two');
