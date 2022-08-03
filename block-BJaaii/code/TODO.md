@@ -33,10 +33,31 @@ Getter
 ```js
 class Stack{
     constructor(){
-
+        this.stack = [];
     }
     push(ele){
-        return this.push(ele);
+        this.stack.push(ele);
+        return this.stack;
+    }
+    pop(){
+        this.stack.pop()
+        return this.stack;
+    }
+    peek(index = this.stack.length - 1){
+        return this.stack[index]
+    }
+    reverse(){
+        this.stack.reverse();
+        return this.stack;
+    }
+    isEmpty(){
+       return this.stack.length === 0;
+    }
+    displayStack(){
+        return this.stack.join(" ")
+    }
+    get length(){
+        return this.stack.length
     }
 }
 
@@ -78,6 +99,38 @@ Getter
 #### Test
 
 ```js
+class Queue{
+    constructor(){
+        this.stack = [];
+    }
+    enqueue(ele){
+        this.stack.push(ele);
+        return this.stack;
+    }
+    dequeue(){
+        this.stack.shift()
+        return this.stack;
+    }
+    peek(index = 0){
+        return this.stack[index]
+    }
+    reverse(){
+        this.stack.reverse();
+        return this.stack;
+    }
+    isEmpty(){
+       return this.stack.length === 0;
+    }
+    displayQueue(){
+        return this.stack.join(" ")
+    }
+    get length(){
+        return this.stack.length
+    }
+}
+
+
+
 let atmQueue = new Queue();
 atmQueue.enqueue('Aman');
 atmQueue.enqueue('John');
